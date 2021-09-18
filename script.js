@@ -1,5 +1,7 @@
 let arr = [];
 let tableBody = document.getElementById("tableBody");
+
+
 //fetch data function
 function fetchData(){
     fetch("https://covid-193.p.rapidapi.com/statistics", {
@@ -25,7 +27,7 @@ function fetchData(){
     
     }
 
-function hide(){
+function toggle(){
     var x = document.querySelector(".buttons");
     if (x.style.display === "none") {
       x.style.display = "block";
@@ -36,16 +38,16 @@ function hide(){
 
 
 //comparable function
-// function GetSortOrder(prop) {    
-//     return function(a, b) {    
-//         if (a[prop] > b[prop]) {    
-//             return 1;    
-//         } else if (a[prop] < b[prop]) {    
-//             return -1;    
-//         }    
-//         return 0;    
-//     }    
-// }  
+function GetSortOrder(prop) {    
+    return function(a, b) {    
+        if (a[prop] > b[prop]) {    
+            return 1;    
+        } else if (a[prop] < b[prop]) {    
+            return -1;    
+        }    
+        return 0;    
+    }    
+}  
 
 
 //comparable function for sorting data as new cases
@@ -68,6 +70,7 @@ function compareNewCases( a, b ) {
     return 0;
   }
 
+
 //comparable function for sorting data as Deaths Per Million
 function compareDeathPerMillion( a, b ) {
     if(a.deaths["1M_pop"] === null){
@@ -88,6 +91,7 @@ function compareDeathPerMillion( a, b ) {
     return 0;
   }
  
+
 //comparable function for sorting data as Cases Per Million
 function compareCasePerMillion( a, b ) {
     if(a.cases["1M_pop"] === null){
@@ -111,13 +115,16 @@ function compareCasePerMillion( a, b ) {
 fetchData();
 console.log(arr);
 
+
 //display data on web page sorted on the basis of new cases
-setTimeout( function getData(){
+function getData(){
+    tableBody.innerHTML = "";
     arr.sort(compareNewCases);
     
     arr.forEach((element, index) => {
         tableBody.innerHTML = tableBody.innerHTML + 
         `<tr>
+        <th>${element.continent}</th>
         <th>${element.country}</th>
         <td>${(element.cases.new === "+-1") ? "NA" : element.cases.new}</td>
         <td>${element.cases.total}</td>
@@ -129,7 +136,10 @@ setTimeout( function getData(){
         <td>${(element.deaths["1M_pop"] === null) ? "NA" : element.deaths["1M_pop"]}</td>
         </tr>`
     })
-},2000)
+}
+setTimeout(getData ,2000);
+
+
 //filter data on web page sorted on the basis of deaths per million
 function getDataByDeathsPerMillion(){
     tableBody.innerHTML = "";
@@ -138,6 +148,7 @@ function getDataByDeathsPerMillion(){
     arr.forEach((element, index) => {
         tableBody.innerHTML = tableBody.innerHTML + 
         `<tr>
+        <th>${element.continent}</th>
         <th>${element.country}</th>
         <td>${(element.cases.new === "+-1") ? "NA" : element.cases.new}</td>
         <td>${element.cases.total}</td>
@@ -152,6 +163,7 @@ function getDataByDeathsPerMillion(){
 
 }
 
+
 //filter data on web page sorted on the basis of cases per million
 function getDataByCasesPerMillion(){
     tableBody.innerHTML = "";
@@ -160,6 +172,29 @@ function getDataByCasesPerMillion(){
     arr.forEach((element, index) => {
         tableBody.innerHTML = tableBody.innerHTML + 
         `<tr>
+        <th>${element.continent}</th>
+        <th>${element.country}</th>
+        <td>${(element.cases.new === "+-1") ? "NA" : element.cases.new}</td>
+        <td>${element.cases.total}</td>
+        <td>${element.cases.active}</td>
+        <td>${(element.cases.critical === null) ? "NA" : element.cases.critical}</td>
+        <td>${(element.cases["1M_pop"] === "-1") ? "NA" : element.cases["1M_pop"]}</td>
+        <td>${(element.cases.recovered === null) ? "NA" : element.cases.recovered}</td>
+        <td>${(element.deaths.total === null) ? "NA" : element.cases.total}</td>
+        <td>${(element.deaths["1M_pop"] === "-1") ? "NA" : element.deaths["1M_pop"]}</td>
+        </tr>`
+    })    
+
+}
+
+function SortByContinent(){
+    tableBody.innerHTML = "";
+    arr.sort(GetSortOrder("continent"));
+
+    arr.forEach((element, index) => {
+        tableBody.innerHTML = tableBody.innerHTML + 
+        `<tr>
+        <th>${element.continent}</th>
         <th>${element.country}</th>
         <td>${(element.cases.new === "+-1") ? "NA" : element.cases.new}</td>
         <td>${element.cases.total}</td>
@@ -175,12 +210,24 @@ function getDataByCasesPerMillion(){
 }
 
 
+function SortByCountry(){
+    tableBody.innerHTML = "";
+    arr.sort(GetSortOrder("country"));
 
+    arr.forEach((element, index) => {
+        tableBody.innerHTML = tableBody.innerHTML + 
+        `<tr>
+        <th>${element.continent}</th>
+        <th>${element.country}</th>
+        <td>${(element.cases.new === "+-1") ? "NA" : element.cases.new}</td>
+        <td>${element.cases.total}</td>
+        <td>${element.cases.active}</td>
+        <td>${(element.cases.critical === null) ? "NA" : element.cases.critical}</td>
+        <td>${(element.cases["1M_pop"] === "-1") ? "NA" : element.cases["1M_pop"]}</td>
+        <td>${(element.cases.recovered === null) ? "NA" : element.cases.recovered}</td>
+        <td>${(element.deaths.total === null) ? "NA" : element.cases.total}</td>
+        <td>${(element.deaths["1M_pop"] === "-1") ? "NA" : element.deaths["1M_pop"]}</td>
+        </tr>`
+    })    
 
-
-
-
-
-
-
- 
+}
