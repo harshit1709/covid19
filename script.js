@@ -68,8 +68,8 @@ function compareNewCases( a, b ) {
     return 0;
   }
 
-//comparable function for sorting data as Deaths or Cases Per Million
-function compareDeathOrCasePerMillion( a, b ) {
+//comparable function for sorting data as Deaths Per Million
+function compareDeathPerMillion( a, b ) {
     if(a.deaths["1M_pop"] === null){
         a.deaths["1M_pop"] = "-1";
     }
@@ -87,6 +87,26 @@ function compareDeathOrCasePerMillion( a, b ) {
     
     return 0;
   }
+ 
+//comparable function for sorting data as Cases Per Million
+function compareCasePerMillion( a, b ) {
+    if(a.cases["1M_pop"] === null){
+        a.cases["1M_pop"] = "-1";
+    }
+    if(b.cases["1M_pop"] === null){
+        b.cases["1M_pop"] = "-1";
+    }
+    if(a.cases["1M_pop"] != null && b.cases["1M_pop"]!= null){
+    if ( parseInt(a.cases["1M_pop"]) < parseInt(b.cases["1M_pop"]) ){
+      return 1;
+    }
+    if ( parseInt(a.cases["1M_pop"]) > parseInt(b.cases["1M_pop"]) ){
+      return -1;
+    }
+    }
+    
+    return 0;
+  }  
 
 fetchData();
 console.log(arr);
@@ -104,8 +124,8 @@ setTimeout( function getData(){
         <td>${element.cases.active}</td>
         <td>${(element.cases.critical === null) ? "NA" : element.cases.critical}</td>
         <td>${(element.cases["1M_pop"] === null) ? "NA" : element.cases["1M_pop"]}</td>
-        <td>${element.cases.recovered}</td>
-        <td>${element.deaths.total}</td>
+        <td>${(element.cases.recovered === null) ? "NA" : element.cases.recovered}</td>
+        <td>${(element.deaths.total === null) ? "NA" : element.cases.total}</td>
         <td>${(element.deaths["1M_pop"] === null) ? "NA" : element.deaths["1M_pop"]}</td>
         </tr>`
     })
@@ -124,8 +144,8 @@ function getDataByDeathsPerMillion(){
         <td>${element.cases.active}</td>
         <td>${(element.cases.critical === null) ? "NA" : element.cases.critical}</td>
         <td>${(element.cases["1M_pop"] === null) ? "NA" : element.cases["1M_pop"]}</td>
-        <td>${element.cases.recovered}</td>
-        <td>${element.deaths.total}</td>
+        <td>${(element.cases.recovered === null) ? "NA" : element.cases.recovered}</td>
+        <td>${(element.deaths.total === null) ? "NA" : element.cases.total}</td>
         <td>${(element.deaths["1M_pop"] === "-1") ? "NA" : element.deaths["1M_pop"]}</td>
         </tr>`
     })    
@@ -135,7 +155,7 @@ function getDataByDeathsPerMillion(){
 //filter data on web page sorted on the basis of cases per million
 function getDataByCasesPerMillion(){
     tableBody.innerHTML = "";
-    arr.sort(compareDeathOrCasePerMillion);
+    arr.sort(compareCasePerMillion);
 
     arr.forEach((element, index) => {
         tableBody.innerHTML = tableBody.innerHTML + 
@@ -146,8 +166,8 @@ function getDataByCasesPerMillion(){
         <td>${element.cases.active}</td>
         <td>${(element.cases.critical === null) ? "NA" : element.cases.critical}</td>
         <td>${(element.cases["1M_pop"] === "-1") ? "NA" : element.cases["1M_pop"]}</td>
-        <td>${element.cases.recovered}</td>
-        <td>${element.deaths.total}</td>
+        <td>${(element.cases.recovered === null) ? "NA" : element.cases.recovered}</td>
+        <td>${(element.deaths.total === null) ? "NA" : element.cases.total}</td>
         <td>${(element.deaths["1M_pop"] === "-1") ? "NA" : element.deaths["1M_pop"]}</td>
         </tr>`
     })    
