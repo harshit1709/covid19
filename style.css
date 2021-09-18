@@ -5,3 +5,15 @@
     align-items: center;
 
 }
+.buttons{
+    display: none;
+}
+.filter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+button:hover{
+    cursor: pointer;
+}
