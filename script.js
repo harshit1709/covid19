@@ -125,7 +125,7 @@ function getData(){
         tableBody.innerHTML = tableBody.innerHTML + 
         `<tr>
         <td>${element.continent}</td>
-        <td>${element.country}</td>
+        <td class = "country">${element.country}</td>
         <td>${(element.cases.new === "+-1") ? "NA" : element.cases.new}</td>
         <td>${element.cases.total}</td>
         <td>${element.cases.active}</td>
@@ -149,7 +149,7 @@ function getDataByDeathsPerMillion(){
         tableBody.innerHTML = tableBody.innerHTML + 
         `<tr>
         <td>${element.continent}</td>
-        <td>${element.country}</td>
+        <td  class = "country">${element.country}</td>
         <td>${(element.cases.new === "+-1") ? "NA" : element.cases.new}</td>
         <td>${element.cases.total}</td>
         <td>${element.cases.active}</td>
@@ -173,7 +173,7 @@ function getDataByCasesPerMillion(){
         tableBody.innerHTML = tableBody.innerHTML + 
         `<tr>
         <td>${element.continent}</td>
-        <td>${element.country}</td>
+        <td  class = "country">${element.country}</td>
         <td>${(element.cases.new === "+-1") ? "NA" : element.cases.new}</td>
         <td>${element.cases.total}</td>
         <td>${element.cases.active}</td>
@@ -196,7 +196,7 @@ function SortByContinent(){
         tableBody.innerHTML = tableBody.innerHTML + 
         `<tr>
         <td>${element.continent}</td>
-        <td>${element.country}</td>
+        <td  class = "country">${element.country}</td>
         <td>${(element.cases.new === "+-1") ? "NA" : element.cases.new}</td>
         <td>${element.cases.total}</td>
         <td>${element.cases.active}</td>
@@ -219,7 +219,7 @@ function SortByCountry(){
         tableBody.innerHTML = tableBody.innerHTML + 
         `<tr>
         <td>${element.continent}</td>
-        <td>${element.country}</td>
+        <td  class = "country">${element.country}</td>
         <td>${(element.cases.new === "+-1") ? "NA" : element.cases.new}</td>
         <td>${element.cases.total}</td>
         <td>${element.cases.active}</td>
