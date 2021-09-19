@@ -19,7 +19,8 @@ button:hover{
 }
 
 button{
-    border-radius: 4px !important;
+    margin: 4px !important;
+
 }
 
 .table-dark

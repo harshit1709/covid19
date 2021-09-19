@@ -187,6 +187,7 @@ function getDataByCasesPerMillion(){
 
 }
 
+//filter data on web page sorted on the basis of continent
 function SortByContinent(){
     tableBody.innerHTML = "";
     arr.sort(GetSortOrder("continent"));
@@ -209,7 +210,7 @@ function SortByContinent(){
 
 }
 
-
+//filter data on web page sorted on the basis of country
 function SortByCountry(){
     tableBody.innerHTML = "";
     arr.sort(GetSortOrder("country"));
