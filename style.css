@@ -27,3 +27,30 @@ button{
 {
     min-height: 100vh;
 }
+th:nth-child(1){
+    width: 160px;
+    /* height: 50px; */
+    /* position: absolute; */
+    z-index: 10;
+    /* background: inherit; */
+    box-sizing: border-box;
+}
+td:nth-child(1){
+    box-shadow: 5px 0 3px -2px #ccc;
+    width: 110px;
+    position: fixed;
+    position: absolute;
+    z-index: 10;
+    /* background: inherit; */
+    /* padding: 10px; */
+}
+/* td:nth-child(2){
+    width: 200px;
+} */
+    
+.table-dark td, .table-dark th, .table-dark thead th {
+    border-color: #212529;
+    background: #212529;
+    height: 63px;
+    padding-left: 25px;
+}

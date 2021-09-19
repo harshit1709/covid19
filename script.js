@@ -124,8 +124,8 @@ function getData(){
     arr.forEach((element, index) => {
         tableBody.innerHTML = tableBody.innerHTML + 
         `<tr>
-        <th>${element.continent}</th>
-        <th>${element.country}</th>
+        <td>${element.continent}</td>
+        <td>${element.country}</td>
         <td>${(element.cases.new === "+-1") ? "NA" : element.cases.new}</td>
         <td>${element.cases.total}</td>
         <td>${element.cases.active}</td>
@@ -148,8 +148,8 @@ function getDataByDeathsPerMillion(){
     arr.forEach((element, index) => {
         tableBody.innerHTML = tableBody.innerHTML + 
         `<tr>
-        <th>${element.continent}</th>
-        <th>${element.country}</th>
+        <td>${element.continent}</td>
+        <td>${element.country}</td>
         <td>${(element.cases.new === "+-1") ? "NA" : element.cases.new}</td>
         <td>${element.cases.total}</td>
         <td>${element.cases.active}</td>
@@ -172,8 +172,8 @@ function getDataByCasesPerMillion(){
     arr.forEach((element, index) => {
         tableBody.innerHTML = tableBody.innerHTML + 
         `<tr>
-        <th>${element.continent}</th>
-        <th>${element.country}</th>
+        <td>${element.continent}</td>
+        <td>${element.country}</td>
         <td>${(element.cases.new === "+-1") ? "NA" : element.cases.new}</td>
         <td>${element.cases.total}</td>
         <td>${element.cases.active}</td>
@@ -195,8 +195,8 @@ function SortByContinent(){
     arr.forEach((element, index) => {
         tableBody.innerHTML = tableBody.innerHTML + 
         `<tr>
-        <th>${element.continent}</th>
-        <th>${element.country}</th>
+        <td>${element.continent}</td>
+        <td>${element.country}</td>
         <td>${(element.cases.new === "+-1") ? "NA" : element.cases.new}</td>
         <td>${element.cases.total}</td>
         <td>${element.cases.active}</td>
@@ -218,8 +218,8 @@ function SortByCountry(){
     arr.forEach((element, index) => {
         tableBody.innerHTML = tableBody.innerHTML + 
         `<tr>
-        <th>${element.continent}</th>
-        <th>${element.country}</th>
+        <td>${element.continent}</td>
+        <td>${element.country}</td>
         <td>${(element.cases.new === "+-1") ? "NA" : element.cases.new}</td>
         <td>${element.cases.total}</td>
         <td>${element.cases.active}</td>
