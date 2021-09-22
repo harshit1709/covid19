@@ -1,8 +1,24 @@
+body{
+    overflow-x: hidden;
+}
+
 .container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: Montserrat,sans-serif;
+
+}
+.header{
+    
+    width: 1349px;
+    
+    text-align: center;
+    height: 100px;
+    background-color: black;
+    color: blanchedalmond;
+    padding: 0.5rem;
 
 }
 .buttons{
@@ -55,6 +71,84 @@ td:nth-child(1){
     height: 63px;
     padding-left: 25px;
 }
+
+.caseContainer{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+.caseContainer > div{
+    width: 250px;
+    /* line-height: 100px; */
+    padding: 8px;
+    margin : 10px;
+    text-align: center;
+    font-size: 16px;
+    /* background-color: #f1f1f1; */
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    line-height: 1.5rem;
+
+}
+.totalCase{
+    background-color: rgba(252,165,165,1);
+    color: #EF4444;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.activeCase{
+    background-color: rgba(147,197,253,1);
+    color: rgba(59,130,246,1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.recoveredCase{
+    background-color: rgba(110,231,183,1);
+    color: #10B981;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.totalDeaths{
+    background-color: #6c757db4;
+    color: #6c757d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.newCases{
+    color:#EF4444;
+}
+.recovered{
+    color: #10B981;
+}
+
+
 .country{
     padding-left: 172px !important;
 }
+
+.icon{
+    animation: zoom-in-zoom-out 1.5s ease infinite;
+}
+@keyframes zoom-in-zoom-out {
+    0% {
+      transform: scale(1, 1);
+    }
+    50% {
+      transform: scale(1.5, 1.5);
+    }
+    100% {
+      transform: scale(1, 1);
+    }
+  }
+
+

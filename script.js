@@ -1,6 +1,15 @@
 let arr = [];
 let tableBody = document.getElementById("tableBody");
 
+let total = document.getElementById("total");
+let active = document.getElementById("active");
+let recovered = document.getElementById("recovered");
+let death = document.getElementById("death");
+
+let totalVal;
+let activeVal;
+let recoveredVal;
+let deathVal;
 
 //fetch data function
 function fetchData(){
@@ -15,10 +24,23 @@ function fetchData(){
     .then(result => {
         // console.log(result);
         result.response.forEach(element => {
+            if(element.country == "All"){
+                totalVal = element.cases.total;
+                activeVal = element.cases.active;
+                recoveredVal = element.cases.total;
+                deathVal = element.deaths.total;
+                
+            }else{
             arr.push(element);
+            }
             
         });
-        
+        total.innerHTML = `<b>${totalVal}</b>`;
+        active.innerHTML = `<b>${activeVal}</b>`;
+        recovered.innerHTML = `<b>${recoveredVal}</b>`;
+        death.innerHTML = `<b>${deathVal}</b>`;
+
+        getData();
             
         })
     .catch(err => {
@@ -126,18 +148,18 @@ function getData(){
         `<tr>
         <td>${element.continent}</td>
         <td class = "country">${element.country}</td>
-        <td>${(element.cases.new === "+-1") ? "NA" : element.cases.new}</td>
+        <td class="newCases">${(element.cases.new === "+-1") ? "NA" : element.cases.new}</td>
         <td>${element.cases.total}</td>
         <td>${element.cases.active}</td>
         <td>${(element.cases.critical === null) ? "NA" : element.cases.critical}</td>
+        <td class = "recovered">${(element.cases.recovered === null) ? "NA" : element.cases.recovered}</td>
         <td>${(element.cases["1M_pop"] === null) ? "NA" : element.cases["1M_pop"]}</td>
-        <td>${(element.cases.recovered === null) ? "NA" : element.cases.recovered}</td>
-        <td>${(element.deaths.total === null) ? "NA" : element.cases.total}</td>
+        <td>${(element.deaths.total === null) ? "NA" : element.deaths.total}</td>
         <td>${(element.deaths["1M_pop"] === null) ? "NA" : element.deaths["1M_pop"]}</td>
         </tr>`
     })
 }
-setTimeout(getData ,2000);
+// setTimeout(getData ,2000);
 
 
 //filter data on web page sorted on the basis of deaths per million
@@ -150,13 +172,13 @@ function getDataByDeathsPerMillion(){
         `<tr>
         <td>${element.continent}</td>
         <td  class = "country">${element.country}</td>
-        <td>${(element.cases.new === "+-1") ? "NA" : element.cases.new}</td>
+        <td class="newCases">${(element.cases.new === "+-1") ? "NA" : element.cases.new}</td>
         <td>${element.cases.total}</td>
         <td>${element.cases.active}</td>
         <td>${(element.cases.critical === null) ? "NA" : element.cases.critical}</td>
+        <td class = "recovered">${(element.cases.recovered === null) ? "NA" : element.cases.recovered}</td>
         <td>${(element.cases["1M_pop"] === null) ? "NA" : element.cases["1M_pop"]}</td>
-        <td>${(element.cases.recovered === null) ? "NA" : element.cases.recovered}</td>
-        <td>${(element.deaths.total === null) ? "NA" : element.cases.total}</td>
+        <td>${(element.deaths.total === null) ? "NA" : element.deaths.total}</td>
         <td>${(element.deaths["1M_pop"] === "-1") ? "NA" : element.deaths["1M_pop"]}</td>
         </tr>`
     })    
@@ -174,13 +196,13 @@ function getDataByCasesPerMillion(){
         `<tr>
         <td>${element.continent}</td>
         <td  class = "country">${element.country}</td>
-        <td>${(element.cases.new === "+-1") ? "NA" : element.cases.new}</td>
+        <td class="newCases">${(element.cases.new === "+-1") ? "NA" : element.cases.new}</td>
         <td>${element.cases.total}</td>
         <td>${element.cases.active}</td>
         <td>${(element.cases.critical === null) ? "NA" : element.cases.critical}</td>
+        <td class = "recovered">${(element.cases.recovered === null) ? "NA" : element.cases.recovered}</td>
         <td>${(element.cases["1M_pop"] === "-1") ? "NA" : element.cases["1M_pop"]}</td>
-        <td>${(element.cases.recovered === null) ? "NA" : element.cases.recovered}</td>
-        <td>${(element.deaths.total === null) ? "NA" : element.cases.total}</td>
+        <td>${(element.deaths.total === null) ? "NA" : element.deaths.total}</td>
         <td>${(element.deaths["1M_pop"] === "-1") ? "NA" : element.deaths["1M_pop"]}</td>
         </tr>`
     })    
@@ -197,13 +219,13 @@ function SortByContinent(){
         `<tr>
         <td>${element.continent}</td>
         <td  class = "country">${element.country}</td>
-        <td>${(element.cases.new === "+-1") ? "NA" : element.cases.new}</td>
+        <td class="newCases">${(element.cases.new === "+-1") ? "NA" : element.cases.new}</td>
         <td>${element.cases.total}</td>
         <td>${element.cases.active}</td>
         <td>${(element.cases.critical === null) ? "NA" : element.cases.critical}</td>
+        <td class = "recovered">${(element.cases.recovered === null) ? "NA" : element.cases.recovered}</td>
         <td>${(element.cases["1M_pop"] === "-1") ? "NA" : element.cases["1M_pop"]}</td>
-        <td>${(element.cases.recovered === null) ? "NA" : element.cases.recovered}</td>
-        <td>${(element.deaths.total === null) ? "NA" : element.cases.total}</td>
+        <td>${(element.deaths.total === null) ? "NA" : element.deaths.total}</td>
         <td>${(element.deaths["1M_pop"] === "-1") ? "NA" : element.deaths["1M_pop"]}</td>
         </tr>`
     })    
@@ -220,13 +242,13 @@ function SortByCountry(){
         `<tr>
         <td>${element.continent}</td>
         <td  class = "country">${element.country}</td>
-        <td>${(element.cases.new === "+-1") ? "NA" : element.cases.new}</td>
+        <td class="newCases">${(element.cases.new === "+-1") ? "NA" : element.cases.new}</td>
         <td>${element.cases.total}</td>
         <td>${element.cases.active}</td>
         <td>${(element.cases.critical === null) ? "NA" : element.cases.critical}</td>
+        <td class = "recovered">${(element.cases.recovered === null) ? "NA" : element.cases.recovered}</td>
         <td>${(element.cases["1M_pop"] === "-1") ? "NA" : element.cases["1M_pop"]}</td>
-        <td>${(element.cases.recovered === null) ? "NA" : element.cases.recovered}</td>
-        <td>${(element.deaths.total === null) ? "NA" : element.cases.total}</td>
+        <td>${(element.deaths.total === null) ? "NA" : element.deaths.total}</td>
         <td>${(element.deaths["1M_pop"] === "-1") ? "NA" : element.deaths["1M_pop"]}</td>
         </tr>`
     })    
